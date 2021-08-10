@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+    width: 2000px;
+}
+
+.box {
+    width: 320px;
+    height: 220px;
+}
