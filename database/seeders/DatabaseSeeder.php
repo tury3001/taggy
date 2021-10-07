@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->deleteFiles();
+
         Set::factory(3)->create();
 
         Resource::factory(10)->has(
@@ -35,5 +37,13 @@ class DatabaseSeeder extends Seeder
         )->create([
             'set_id' => 3
         ]);
+    }
+
+    private function deleteFiles()
+    {
+        $dir = public_path() . '/uploads/';
+        foreach(glob($dir.'*.*') as $v){
+            unlink($v);
+        }
     }
 }
