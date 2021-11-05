@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Set;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View::share([
+            'sets' => Set::all()
+        ]);
     }
 }

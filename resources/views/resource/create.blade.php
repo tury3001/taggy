@@ -28,8 +28,7 @@
                 >
                 </x-form.input>
             </x-form.row>
-            <x-form.button label="Save" class="bg-yellow-400" icon="far fa-save" class="bg-yellow-400 text-black"></x-form.button>
+            <x-form.button label="Save" icon="far fa-save" class="bg-yellow-400 text-black"></x-form.button>
         </form>
-        <x-message.success></x-message.success>
     </x-form.fieldset>
 @endsection

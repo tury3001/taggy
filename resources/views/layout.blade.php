@@ -1,14 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/css/app.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/5c686abe8b.js" crossorigin="anonymous"></script>
-    <title>Taggy</title>
+    @include('_partials.head')
 </head>
 <body>
     <header>
@@ -55,12 +48,20 @@
                     </select>
                     <button type="submit" class="bg-yellow-400 rounded-full text-black px-4 py-1 mr-4 text-sm uppercase font-bold"><i class="fas fa-chevron-right"></i> Select</button>
                 </form>
+                Hello, {{ auth()->user()->name }}
+                <div x-data="{}">
+                    <form action="/logout" x-ref="logoutForm" method="POST">
+                        @csrf
+                        <button class="underline ml-2" x-on:click="$refs.logoutForm.submit()"> (Logout)</button>
+                    </form>
+                </div>
             </div>
         </navbar>
     </header>
     <main class="container mx-auto mt-12 min-h-screen">
         @yield('content')
     </main>
+    <x-flash></x-flash>
     <footer class="bg-gray-900 text-white flex justify-center py-12 text-xs mt-20">
         Taggy
     </footer>

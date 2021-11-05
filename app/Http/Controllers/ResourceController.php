@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tag;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Resource;
 use App\Models\Set;
@@ -33,8 +34,7 @@ class ResourceController extends Controller
 
         return view('resource.list', [
             'pagination' => $pagination,
-            'sets' => Set::all(),
-            'currentSetId' => $currentSetId
+            'currentSetId' => $currentSetId,
         ]);
     }
 
@@ -47,9 +47,8 @@ class ResourceController extends Controller
     public function show(Resource $resource): View
     {
         return view('resource.show', [
-            'sets' => Set::all(),
-            'currentSetId' => Session::get('currentSetId') ?? 1,
-            'resource' => Resource::find($resource->id)
+            'resource' => Resource::find($resource->id),
+            'currentSetId' => Session::get('currentSetId') ?? 1
         ]);
     }
 
@@ -62,8 +61,7 @@ class ResourceController extends Controller
     public function create(): View
     {
         return view('resource.create', [
-            'sets' => Set::all(),
-            'currentSetId' => request()->input('set')
+            'currentSetId' => Session::get('currentSetId') ?? 1
         ]);
     }
 
@@ -105,9 +103,8 @@ class ResourceController extends Controller
     public function edit($id): View
     {
         return view('resource.edit', [
-           'sets' => Set::all(),
-           'currentSetId' => Session::get('currentSetId') ?? 1,
-           'resource' => Resource::find($id)
+           'resource' => Resource::find($id),
+           'currentSetId' => Session::get('currentSetId') ?? 1
         ]);
     }
 
@@ -146,5 +143,17 @@ class ResourceController extends Controller
         $resource->save();
 
         return back()->with('success', 'Resource has been updated!');
+    }
+
+    public function destroy()
+    {
+        /** @var Resource $resource */
+        $resource = Resource::find(request()->resource);
+
+        unlink(storage_path('/app/public/' . $resource->path));
+
+        $resource->delete();
+
+        return redirect('/')->with('success', 'Resource has been deleted!');
     }
 }

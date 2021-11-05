@@ -18,7 +18,6 @@ class TagController extends Controller
 
         return view('tag.list', [
             'tags' => $tags,
-            'sets' => Set::all(),
             'currentSetId' => $currentSetId,
             'currentSet' => Set::find($currentSetId)
         ]);

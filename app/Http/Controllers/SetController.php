@@ -11,16 +11,14 @@ class SetController extends Controller
     public function index()
     {
         return view('set.list', [
-            'currentSetId' => Session::get('currentSetId'),
-            'sets' => Set::all()
+            'currentSetId' => Session::get('currentSetId') ?? 1
         ]);
     }
 
     public function edit(int $id)
     {
         return view('set.edit', [
-            'currentSetId' => Session::get('currentSetId'),
-            'sets' => Set::all(),
+            'currentSetId' => Session::get('currentSetId') ?? 1,
             'set' => Set::find($id)
         ]);
     }
@@ -43,8 +41,7 @@ class SetController extends Controller
     public function create()
     {
         return view('set.addSetForm', [
-            'currentSetId' => Session::get('currentSetId'),
-            'sets' => Set::all()
+            'currentSetId' => Session::get('currentSetId') ?? 1,
         ]);
     }
 

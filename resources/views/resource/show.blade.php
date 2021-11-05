@@ -14,7 +14,7 @@
         </div>
         <div class="flex justify-center w-full mt-10">
             <a href="/resources/{{ $resource->id }}/edit" class="w-1/4 flex justify-center">
-                <x-form.button label="Editar" icon="far fa-edit" class="bg-yellow-400 text-black">Editar</x-form.button>
+                <x-form.button label="Editar" icon="far fa-edit" class="bg-yellow-400 text-black">Edit</x-form.button>
             </a>
         </div>
     </div>
