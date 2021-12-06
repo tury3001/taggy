@@ -4,8 +4,6 @@ Taggy is a small CMS designed to store and classify images and videos.
 
 Uses PHP 8 and Laravel 8 with Tailwind CSS
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
 ## Features
 - Upload your media and add multiple tags.
 - Edit existing media.
