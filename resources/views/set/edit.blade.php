@@ -12,7 +12,6 @@
             <div class="flex justify-end">
                 <x-form.button label="save" icon="far fa-save" class="bg-yellow-400 text-black"></x-form.button>
             </div>
-            <x-message.success></x-message.success>
         </form>
     </x-form.fieldset>
 @endsection

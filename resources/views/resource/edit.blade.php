@@ -50,9 +50,11 @@
                 <form action="/resources/{{ $resource->id }}" method="POST" name="deleteResource">
                     @csrf
                     @method('DELETE')
-                    <button class="bg-red-600 text-white text-sm text-black w-1/4 py-2 rounded-full uppercase font-bold">
-                        <i class="fas fa-trash-alt mr-2"></i> Delete
-                    </button>
+                    <x-form.button label="Delete"
+                                   icon="fas fa-trash-alt"
+                                   class="bg-red-600 text-white"
+                    >
+                    </x-form.button>
                 </form>
             </div>
         </main>
